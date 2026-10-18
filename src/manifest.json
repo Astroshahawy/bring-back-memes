@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Bring back memes",
+  "version": "1.0.0",
+  "description": "Turns [[username]] in Facebook chats into that profile's picture, shown inline like an emoji.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.facebook.com/*",
+    "https://graph.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/*",
+        "https://web.facebook.com/*",
+        "https://www.messenger.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
